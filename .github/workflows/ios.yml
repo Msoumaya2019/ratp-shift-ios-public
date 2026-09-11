@@ -1,0 +1,38 @@
+name: Unsigned iOS
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - run: npm run build:web
+      - run: brew install xcodegen
+      - run: xcodegen generate
+      - name: Build unsigned device app
+        run: xcodebuild -project RATPShift.xcodeproj -scheme RATPShift -configuration Release -sdk iphoneos -destination 'generic/platform=iOS' -derivedDataPath build CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" build
+      - name: Package IPA
+        run: |
+          mkdir Payload
+          cp -R build/Build/Products/Release-iphoneos/RATPShift.app Payload/
+          test -f Payload/RATPShift.app/Web/index.html
+          test -f Payload/RATPShift.app/RATPShift
+          if codesign --verify Payload/RATPShift.app 2>/dev/null; then exit 1; fi
+          zip -qry RATPShift-unsigned.ipa Payload
+          shasum -a 256 RATPShift-unsigned.ipa > SHA256.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: RATPShift-unsigned
+          path: |
+            RATPShift-unsigned.ipa
+            SHA256.txt
+

@@ -1,0 +1,91 @@
+:root {
+  --ink: #111216;
+  --muted: #8b8c91;
+  --surface: #f4f4f7;
+  --card: #ffffff;
+  --blue: #2297e5;
+  --cyan: #25a5bb;
+  --green: #78df00;
+  --deep-green: #16ab68;
+  --pink: #ff47ba;
+  --indigo: #3869f7;
+}
+
+.app-screen {
+  background: var(--surface);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+}
+
+.calendar-screen { min-height: 100%; padding: 61px 7px 0; }
+.top-area { display: flex; align-items: center; justify-content: space-between; padding: 7px 11px 16px 12px; }
+.month-heading { display: flex; align-items: center; gap: 2px; }
+.month-heading h1 { min-width: 137px; font-size: 32px; font-weight: 800; letter-spacing: -1.1px; line-height: 1; text-align: center; }
+.month-step { display: grid; width: 25px; height: 34px; place-items: center; padding: 0; border: 0; background: transparent; color: #303037; }
+.month-step:disabled { opacity: 0.2; }
+.month-step svg { width: 20px; height: 20px; }
+
+.view-switch { display: flex; gap: 2px; padding: 3px; border-radius: 23px; background: rgba(255,255,255,0.82); box-shadow: 0 7px 24px rgba(0,0,0,0.06); }
+.view-switch button { display: grid; width: 42px; height: 39px; place-items: center; border: 0; border-radius: 20px; background: transparent; color: #16171b; }
+.view-switch button.active { background: #ececef; }
+.view-switch svg { width: 22px; height: 22px; }
+
+.sync-card { display: flex; align-items: center; justify-content: space-between; min-height: 72px; margin: 0 0 14px; padding: 11px 13px 11px 18px; border-radius: 22px; background: var(--blue); color: white; }
+.sync-title { font-size: 24px; font-weight: 800; letter-spacing: -0.7px; line-height: 1; }
+.sync-title span { padding: 2px 5px; border-radius: 6px; background: #fff; color: var(--blue); font-size: 15px; letter-spacing: 0; vertical-align: 3px; }
+.sync-card p { margin-top: 5px; color: rgba(255,255,255,0.94); font-size: 12px; font-weight: 600; line-height: 1; }
+.sync-card button { display: flex; align-items: center; gap: 5px; min-width: 100px; height: 38px; justify-content: center; padding: 0 12px; border: 0; border-radius: 20px; background: rgba(255,255,255,0.9); color: var(--blue); font-size: 13px; font-weight: 750; }
+
+.calendar-card { overflow: hidden; border-radius: 21px; background: var(--card); box-shadow: 0 1px 0 rgba(0,0,0,0.025); }
+.weekday-row { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); padding: 11px 4px 6px; color: #87878b; font-size: 13px; font-weight: 500; text-align: center; }
+.calendar-week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); min-height: 111px; border-top: 1px solid #e1e1e3; }
+.calendar-week:first-child { border-top: 0; }
+.calendar-day { min-width: 0; padding: 5px 1.5px 6px; border: 0; background: transparent; color: var(--ink); text-align: center; }
+.calendar-day:active { background: #f6f6f8; }
+.calendar-day.muted { opacity: 0.2; }
+.day-number { display: block; height: 25px; font-size: 15px; font-weight: 500; line-height: 20px; }
+.shift-stack { display: grid; gap: 2px; }
+.shift { display: block; min-width: 0; height: 18px; overflow: hidden; border-radius: 3px; color: white; font-size: 12px; font-weight: 500; line-height: 18px; text-overflow: clip; white-space: nowrap; }
+.shift-blue { background: var(--blue); }
+.shift-cyan { background: var(--cyan); }
+.shift-green { background: var(--green); }
+.shift-pink { background: var(--pink); }
+.shift-indigo { background: var(--indigo); }
+.calendar-day .shift-stack .shift-green:not(:only-child) { background: var(--deep-green); }
+.bottom-clearance { height: 118px; }
+
+.bottom-nav { position: absolute; z-index: 14; right: 17px; bottom: 42px; left: 17px; display: grid; grid-template-columns: repeat(4, 1fr); height: 70px; padding: 5px; border: 1px solid rgba(255,255,255,0.9); border-radius: 36px; background: rgba(252,252,253,0.94); box-shadow: 0 8px 30px rgba(0,0,0,0.12); backdrop-filter: blur(18px); }
+.bottom-nav button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 0; border: 0; border-radius: 29px; background: transparent; color: #17181c; font-size: 11px; font-weight: 600; }
+.bottom-nav button.active { background: #e7e8ec; }
+.bottom-nav svg { width: 22px; height: 22px; }
+
+.fab { position: absolute; z-index: 15; right: 19px; bottom: 121px; display: grid; width: 46px; height: 46px; place-items: center; padding: 0; border: 0; border-radius: 50%; background: #202124; color: white; box-shadow: 0 5px 16px rgba(0,0,0,0.24); }
+.fab svg { width: 22px; height: 22px; }
+
+.detail-card { margin-bottom: 10px; padding: 14px; border-left: 5px solid #999; border-radius: 13px; background: #f6f6f8; }
+.detail-pink { border-left-color: var(--pink); }
+.detail-cyan { border-left-color: var(--cyan); }
+.detail-blue { border-left-color: var(--blue); }
+.detail-green { border-left-color: var(--green); }
+.detail-indigo { border-left-color: var(--indigo); }
+.detail-top { display: flex; align-items: center; justify-content: space-between; }
+.detail-top strong { font-size: 16px; }
+.detail-top span { color: #77787d; font-size: 12px; }
+.time-line { display: flex; align-items: center; gap: 9px; margin-top: 16px; font-size: 15px; font-weight: 700; }
+.time-line svg { color: #6d6e73; }
+.time-rule { flex: 1; height: 1px; background: #cfd0d4; }
+.rest-message { margin-top: 12px; color: #6d6e73; }
+
+.add-options { display: grid; gap: 10px; }
+.add-options button { display: flex; align-items: center; gap: 12px; min-height: 62px; padding: 11px 13px; border: 0; border-radius: 14px; background: #f3f3f6; color: #16171b; text-align: left; }
+.add-options button > svg { width: 23px; height: 23px; color: var(--blue); }
+.add-options button span { display: grid; gap: 3px; }
+.add-options strong { font-size: 14px; }
+.add-options small { color: #77787d; font-size: 12px; }
+.sheet-content { padding-bottom: calc(var(--mobile-safe-area-height) + 18px); }
+
+@media (max-width: 380px) {
+  .month-heading h1 { min-width: 122px; font-size: 29px; }
+  .sync-title { font-size: 21px; }
+  .sync-card button { min-width: 92px; padding: 0 10px; font-size: 12px; }
+}
