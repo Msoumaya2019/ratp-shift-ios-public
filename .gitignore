@@ -2,6 +2,6 @@ node_modules/
 App/Web/
 build/
 Payload/
+dist/
 *.ipa
 *.xcodeproj/
-
